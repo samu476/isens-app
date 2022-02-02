@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: isens-frontend
+  namespace: frontend
+spec:
+  selector:
+    matchLabels:
+      app: isens-frontend
+  template:
+    metadata:
+      labels:
+        app: isens-frontend
+    spec:
+      containers:
+        - name: dd-hello-container
+          image: isensacr.azurecr.io/isens-frontend:1.0.0
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+            
